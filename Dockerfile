@@ -1,10 +1,10 @@
 FROM python:3.8
 
-RUN apt-get update -qq \
-    && apt-get -y --no-install-recommends install libssl-dev python3-dev \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt-get -qq autoremove \
-    && apt-get -qq clean
+#RUN apt-get update -qq \
+#    && apt-get -y --no-install-recommends install libssl-dev python3-dev \
+#    && rm -rf /var/lib/apt/lists/* \
+#    && apt-get -qq autoremove \
+#    && apt-get -qq clean
 
 WORKDIR /usr/src/
 
