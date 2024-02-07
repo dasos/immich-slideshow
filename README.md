@@ -26,7 +26,7 @@ Install the dependancies:
 
 Set the variables:
 
-    export iimich_key=<abc123>
+    export immich_key=<abc123>
     export FLASK_DEBUG=true
 
 Execute:
