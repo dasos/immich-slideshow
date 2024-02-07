@@ -72,7 +72,6 @@ function nextPhoto() {
 	tomorrow.setDate(now.getDate() + 1);
 	tomorrow.setHours(2, 0, 0, 0); // Set time to 2 AM tomorrow
 	var timeUntil2AM = tomorrow - now; // Time until 2 AM tomorrow in milliseconds
-    }
 
     // Schedule refresh at 2 AM
     setTimeout(function() {
