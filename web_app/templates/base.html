@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'style.css') }}">
+	
+	<script src="{{ url_for('static', filename= 'script.js') }}"></script>
+
+    <title>{% block title %} {% endblock %}</title>
+  </head>
+  <body>
+	<div class="container">
+	    {% for category, message in get_flashed_messages(with_categories=true) %}
+	        <div class="alert {% if category != "message" %} alert-{{ category }} {% else %} alert-info {% endif %}">{{ message }}</div>
+	    {% endfor %}
+	    {% block content %} {% endblock %}
+	</div>
+  </body>
+</html>

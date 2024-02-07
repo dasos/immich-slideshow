@@ -1,0 +1,34 @@
+img.main {
+	transition: opacity 0.4s ease-in;
+	-webkit-transition: opacity 0.4s ease-in;
+	-moz-transition: opacity 0.4s ease-in;
+	-ms-transition: opacity 0.4s ease-in;
+	-o-transition: opacity 0.4s ease-in;
+	opacity: 1;
+}
+
+img.transition {
+	transition: opacity 0.4s ease-out;
+	-webkit-transition: opacity 0.4s ease-in;
+	-moz-transition: opacity 0.4s ease-in;
+	-ms-transition: opacity 0.4s ease-in;
+	-o-transition: opacity 0.4s ease-in;
+	opacity: 0;
+}
+
+body {
+    margin: 0;
+	background-color: black;
+}
+
+/* Centering styles */
+.container {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	text-align: center;
+}
+
+.centered-img {
+	height: 100%;
+}
