@@ -25,14 +25,15 @@ def request_wrap(url, params=None):
 
 @bp.route("/photos")
 def get_photos():
-    count = 0;
+    count = 0
     asset_list = []
-    while (len(asset_list) < 20 and count < 7):
-      asset_list = asset_list + _get_photos(count)
-      print (f"Current asset length: {len(asset_list)}")
-      count = count + 1
+    while len(asset_list) < 20 and count < 7:
+        asset_list = asset_list + _get_photos(count)
+        print(f"Current asset length: {len(asset_list)}")
+        count = count + 1
 
     return asset_list
+
 
 def _get_photos(day_adjust=0):
 
