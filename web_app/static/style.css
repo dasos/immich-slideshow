@@ -1,4 +1,4 @@
-img.main {
+.nofade {
 	transition: opacity 0.4s ease-in;
 	-webkit-transition: opacity 0.4s ease-in;
 	-moz-transition: opacity 0.4s ease-in;
@@ -7,7 +7,7 @@ img.main {
 	opacity: 1;
 }
 
-img.transition {
+.fade {
 	transition: opacity 0.4s ease-out;
 	-webkit-transition: opacity 0.4s ease-in;
 	-moz-transition: opacity 0.4s ease-in;
@@ -19,6 +19,8 @@ img.transition {
 body {
     margin: 0;
 	background-color: black;
+	font-family: Tahoma, Arial, sans-serif;
+	color: white;
 }
 
 /* Centering styles */
@@ -31,4 +33,12 @@ body {
 
 .centered-img {
 	height: 100%;
+}
+
+/* Bottom right */
+.bottom-right-date {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	padding: 20px;
 }

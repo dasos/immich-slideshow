@@ -1,5 +1,5 @@
 import requests
-import datetime
+from datetime import datetime, timedelta
 import random
 
 from flask import Blueprint, current_app, make_response
@@ -25,10 +25,21 @@ def request_wrap(url, params=None):
 
 @bp.route("/photos")
 def get_photos():
+    count = 0;
+    asset_list = []
+    while (len(asset_list) < 20 and count < 7):
+      asset_list = asset_list + _get_photos(count)
+      print (f"Current asset length: {len(asset_list)}")
+      count = count + 1
 
-    current_time = datetime.datetime.now()
+    return asset_list
 
-    params = {"day": current_time.day, "month": current_time.month}
+def _get_photos(day_adjust=0):
+
+    current_time = datetime.now()
+    dt = current_time + timedelta(days=day_adjust)
+
+    params = {"day": dt.day, "month": dt.month}
 
     response = request_wrap("/asset/memory-lane", params)
 

@@ -33,9 +33,11 @@ function nextPhoto() {
       currentIndex = (currentIndex + 1) % list.length; // Loop back to the beginning when reaching the end
 
       var i = document.getElementById('image');
+	  var t = document.getElementById('date-time');
+	  var c = document.getElementById('container'); 
 
-	  var origClassName = i.className;
-	  i.className += " transition";
+	  var origClassName = c.className;
+	  c.className += " fade";
 	  console.log("Starting transition")
 	  
 	  // Give it a chance to fade out. Not too long though, the image will take a while to load
@@ -46,9 +48,9 @@ function nextPhoto() {
         // Wait till the photo is loaded. This can be a while
         i.onload = function() {
             console.log("Photo loaded");
-            
-		    i.className = origClassName;
-        	console.log("Ending transition")
+            t.textContent = formatDate(list[currentIndex].datetime);
+
+		    c.className = origClassName;
        
 	        setTimeout(nextPhoto, 7000);
             
@@ -78,3 +80,15 @@ function nextPhoto() {
         location.reload();
     }, timeUntil2AM);
 })();
+
+
+
+
+function formatDate(d) {
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var dt = new Date(d);
+    var dd = String(dt.getDate());
+    var mm = months[dt.getMonth()];
+    var yyyy = dt.getFullYear();
+    return dd + ' ' + mm + ' ' + yyyy;
+}
