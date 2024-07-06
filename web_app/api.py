@@ -2,6 +2,8 @@ import requests
 from datetime import datetime, timedelta
 import random
 
+import json
+
 from flask import Blueprint, current_app, make_response
 from urllib.parse import urlparse
 
@@ -20,7 +22,13 @@ def request_wrap(url, params=None):
 
     headers = {"x-api-key": api_key}
 
-    return requests.get(api_url + url, headers=headers, params=params)
+    response = requests.get(api_url + url, headers=headers, params=params)
+    
+    if (response.status_code != 200):
+      print (json.dumps(response.json(), indent=2))
+      raise Exception("Probably not authorised, or API has changed")
+    
+    return response
 
 
 @bp.route("/photos")
@@ -42,9 +50,7 @@ def _get_photos(day_adjust=0):
 
     params = {"day": dt.day, "month": dt.month}
 
-    response = request_wrap("/asset/memory-lane", params)
-
-    # return json.dumps(response.json(), indent=2)
+    response = request_wrap("/assets/memory-lane", params)
 
     # Remove the stuff we don't need
     asset_list = [
@@ -60,7 +66,7 @@ def _get_photos(day_adjust=0):
 @bp.route("/proxy/<string:id>")
 def proxy(id):
 
-    r = request_wrap(f"/asset/thumbnail/{id}?format=JPEG")
+    r = request_wrap(f"/assets/{id}/thumbnail?size=preview")
 
     response = make_response(r.content)
     response.content_type = r.headers.get("content-type")
